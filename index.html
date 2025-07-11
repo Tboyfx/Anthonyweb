@@ -16,6 +16,8 @@
             color: #2c3e50;
             line-height: 1.7;
             background: #f8f9fa;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
         }
 
         /* Navbar */
@@ -44,7 +46,7 @@
         .nav-link {
             color: #fff !important;
             font-weight: 400;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .nav-link:hover {
@@ -66,7 +68,7 @@
 
         .hero-content {
             max-width: 90%;
-            padding: 1rem;
+            padding: 1.5rem;
         }
 
         .hero-content h1 {
@@ -74,6 +76,7 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             animation: fadeIn 1.5s ease-in-out;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero-content p {
@@ -85,34 +88,53 @@
         .hero-content .btn {
             font-size: 1.2rem;
             padding: 0.8rem 2rem;
-            transition: transform 0.3s ease;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
         .hero-content .btn:hover {
             transform: translateY(-3px);
         }
 
+        .sealar-btn {
+            background: #e67e22;
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 10px rgba(230, 126, 34, 0.5);
+        }
+
+        .sealar-btn:hover {
+            background: #d35400;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(230, 126, 34, 0.7);
+        }
+
         /* Section Styles */
         .section {
-            padding: 6rem 0;
+            padding: 7rem 0;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .section h2 {
             font-size: 2.8rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #2c3e50;
             text-align: center;
             margin-bottom: 3rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         /* Service Cards */
         .service-card {
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(50px);
+            background: #fff;
         }
 
         .service-card:hover {
@@ -152,7 +174,7 @@
         /* Testimonials */
         .testimonial-card {
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             background: #fff;
@@ -169,6 +191,7 @@
         .testimonial-card p {
             font-style: italic;
             color: #2c3e50;
+            font-size: 1.1rem;
         }
 
         .testimonial-card h5 {
@@ -186,11 +209,12 @@
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 10px;
-            min-height: 200px;
+            border-radius: 12px;
+            min-height: 250px;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s ease;
+            background: #f8f9fa;
         }
 
         .gallery-item.animate {
@@ -221,6 +245,7 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            font-weight: 600;
         }
 
         .gallery-item:hover .overlay {
@@ -228,7 +253,29 @@
         }
 
         .gallery-item span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #2c3e50;
+            font-size: 1.2rem;
+            text-align: center;
             display: none;
+        }
+
+        .gallery-item img:not([src]) + span,
+        .gallery-item img[src=""] + span {
+            display: block;
+        }
+
+        /* Fallback for failed images */
+        .gallery-item img[onerror] + span {
+            display: block;
+        }
+
+        /* Force visibility after load */
+        .gallery-item.loaded {
+            opacity: 1 !important;
         }
 
         /* Contact Form */
@@ -236,6 +283,12 @@
             border-radius: 8px;
             border: 1px solid #ced4da;
             padding: 0.8rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: #f1c40f;
+            box-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
         }
 
         .submit-btn {
@@ -243,10 +296,14 @@
             background: #f1c40f;
             border: none;
             font-weight: 600;
+            border-radius: 8px;
+            padding: 0.8rem 2rem;
+            transition: all 0.3s ease;
         }
 
         .submit-btn:hover {
             background: #e67e22;
+            transform: translateY(-2px);
         }
 
         .submit-btn .spinner {
@@ -314,6 +371,7 @@
         .whatsapp-btn:hover {
             transform: scale(1.1);
             color: #fff;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
         }
 
         /* Animations */
@@ -355,11 +413,24 @@
                 height: 50px;
                 font-size: 1rem;
             }
+
+            .sealar-btn {
+                font-size: 1rem;
+                padding: 0.6rem 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
             .gallery-item {
-                min-height: 150px;
+                min-height: 180px;
+            }
+
+            .section {
+                padding: 5rem 0;
+            }
+
+            .gallery-item span {
+                font-size: 1rem;
             }
         }
     </style>
@@ -403,6 +474,7 @@
             <h1>We Build Websites That Turn Visitors Into Customers</h1>
             <p>Simple. Fast. Mobile-Friendly.</p>
             <div>
+                <a href="https://shorturl.at/5oezY" class="btn sealar-btn" target="_blank" aria-label="Order your website now">Get Your Website Now</a>
                 <a href="#contact" class="btn btn-primary me-2">Get in Touch</a>
                 <a href="#gallery" class="btn btn-outline-light">View Portfolio</a>
             </div>
@@ -414,7 +486,7 @@
         <div class="container">
             <h2>Our Services</h2>
             <div class="row">
-                <div class="col-md-3 mb-4">
+                <div class="col-12 col-md-3 mb-4">
                     <div class="card service-card h-100 text-center">
                         <div class="card-body">
                             <i class="fas fa-laptop-code fa-3x mb-3"></i>
@@ -423,7 +495,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-12 col-md-3 mb-4">
                     <div class="card service-card h-100 text-center">
                         <div class="card-body">
                             <i class="fas fa-envelope fa-3x mb-3"></i>
@@ -432,7 +504,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-12 col-md-3 mb-4">
                     <div class="card service-card h-100 text-center">
                         <div class="card-body">
                             <i class="fas fa-mobile-alt fa-3x mb-3"></i>
@@ -441,7 +513,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
+                <div class="col-12 col-md-3 mb-4">
                     <div class="card service-card h-100 text-center">
                         <div class="card-body">
                             <i class="fas fa-rocket fa-3x mb-3"></i>
@@ -536,42 +608,42 @@
             <div class="row">
                 <div class="col-12 col-md-4 mb-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643" class="img-fluid rounded" alt="E-Commerce Site">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643" class="img-fluid rounded" alt="E-Commerce Site" loading="lazy">
                         <div class="overlay">E-Commerce Site</div>
                         <span>E-Commerce Site</span>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" class="img-fluid rounded" alt="Portfolio Website">
+                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" class="img-fluid rounded" alt="Portfolio Website" loading="lazy">
                         <div class="overlay">Portfolio Website</div>
                         <span>Portfolio Website</span>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" class="img-fluid rounded" alt="Business Landing Page">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" class="img-fluid rounded" alt="Business Landing Page" loading="lazy">
                         <div class="overlay">Business Landing Page</div>
                         <span>Business Landing Page</span>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" class="img-fluid rounded" alt="Blog Platform">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" class="img-fluid rounded" alt="Blog Platform" loading="lazy">
                         <div class="overlay">Blog Platform</div>
                         <span>Blog Platform</span>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1507238691748-d42291d4b7d3" class="img-fluid rounded" alt="Startup Website">
+                        <img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c" class="img-fluid rounded" alt="Startup Website" loading="lazy">
                         <div class="overlay">Startup Website</div>
                         <span>Startup Website</span>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1516321165247-7b38937a34a7" class="img-fluid rounded" alt="Creative Agency">
+                        <img src="https://images.unsplash.com/photo-1542744094-3ea9c1f8a444" class="img-fluid rounded" alt="Creative Agency" loading="lazy">
                         <div class="overlay">Creative Agency</div>
                         <span>Creative Agency</span>
                     </div>
@@ -620,8 +692,23 @@
         // Log WhatsApp Button Presence
         console.log('WhatsApp button element:', document.querySelector('.whatsapp-btn') ? 'Found' : 'Not found');
 
+        // Log Sealar Button Presence
+        console.log('Sealar button element:', document.querySelector('.sealar-btn') ? 'Found' : 'Not found');
+
         // Log Gallery Items
         console.log('Gallery items found:', document.querySelectorAll('.gallery-item').length);
+
+        // Log Project 5 and 6 Image Loading
+        const project5Img = document.querySelector('img[alt="Startup Website"]');
+        const project6Img = document.querySelector('img[alt="Creative Agency"]');
+        if (project5Img) {
+            project5Img.addEventListener('load', () => console.log('Project 5 image loaded successfully'));
+            project5Img.addEventListener('error', () => console.log('Project 5 image failed to load'));
+        }
+        if (project6Img) {
+            project6Img.addEventListener('load', () => console.log('Project 6 image loaded successfully'));
+            project6Img.addEventListener('error', () => console.log('Project 6 image failed to load'));
+        }
 
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
@@ -647,11 +734,15 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.service-card, .why-choose-item, .testimonial-card, .gallery-item').forEach((el, index) => {
             el.style.transitionDelay = `${index * 0.1}s`;
             observer.observe(el);
+            // Force visibility after 3 seconds
+            setTimeout(() => {
+                el.classList.add('loaded');
+            }, 3000);
         });
 
         // Form Submission
