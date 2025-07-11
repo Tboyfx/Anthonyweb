@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnthonyWeb Design Services</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #2c3e50;
+            line-height: 1.7;
+            background: #f8f9fa;
+        }
+
+        /* Navbar */
+        .navbar {
+            transition: all 0.3s ease;
+            background: transparent;
+            padding: 1.5rem 0;
+        }
+
+        .navbar.scrolled {
+            background: #2c3e50;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #f1c40f !important;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            color: #fff !important;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #f1c40f !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 90%;
+            padding: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero-content p {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content .btn {
+            font-size: 1.2rem;
+            padding: 0.8rem 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-content .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Service Cards */
+        .service-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card i {
+            color: #f1c40f;
+        }
+
+        /* Why Choose Us */
+        .why-choose-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .why-choose-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-choose-item i {
+            color: #f1c40f;
+            margin-right: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            background: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: #2c3e50;
+        }
+
+        .testimonial-card h5 {
+            color: #f1c40f;
+            font-weight: 600;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #2c3e50;
+            border-radius: 50%;
+        }
+
+        /* Gallery */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            min-height: 200px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item.animate {
+            opacity: 1 !important;
+            transform: translateY(0);
+        }
+
+        .gallery-item img {
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: auto;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.7);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item span {
+            display: none;
+        }
+
+        /* Contact Form */
+        .contact-form .form-control {
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            padding: 0.8rem;
+        }
+
+        .submit-btn {
+            position: relative;
+            background: #f1c40f;
+            border: none;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background: #e67e22;
+        }
+
+        .submit-btn .spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .submit-btn.sending .spinner {
+            display: inline-block;
+        }
+
+        .submit-btn.sending span {
+            visibility: hidden;
+        }
+
+        .thank-you-message,
+        .error-message {
+            display: none;
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .thank-you-message {
+            color: #2c3e50;
+            background: #d4edda;
+        }
+
+        .error-message {
+            color: #dc3545;
+            background: #f8d7da;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: clamp(1.5rem, 4vw, 2.2rem);
+            }
+
+            .hero-content p {
+                font-size: clamp(1rem, 2.5vw, 1.2rem);
+            }
+
+            .hero {
+                background-attachment: scroll;
+            }
+
+            .navbar {
+                background: #2c3e50;
+            }
+
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-item {
+                min-height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">AnthonyWeb Design</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#why-choose-us">Why Choose Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>We Build Websites That Turn Visitors Into Customers</h1>
+            <p>Simple. Fast. Mobile-Friendly.</p>
+            <div>
+                <a href="#contact" class="btn btn-primary me-2">Get in Touch</a>
+                <a href="#gallery" class="btn btn-outline-light">View Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card service-card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-laptop-code fa-3x mb-3"></i>
+                            <h5 class="card-title">Web Design</h5>
+                            <p class="card-text">Stunning, custom websites that reflect your brand’s identity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card service-card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-envelope fa-3x mb-3"></i>
+                            <h5 class="card-title">Contact Form Integration</h5>
+                            <p class="card-text">Seamless forms to capture leads and engage customers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card service-card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-mobile-alt fa-3x mb-3"></i>
+                            <h5 class="card-title">Mobile Optimization</h5>
+                            <p class="card-text">Responsive designs for seamless mobile and tablet experiences.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card service-card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-rocket fa-3x mb-3"></i>
+                            <h5 class="card-title">Fast Delivery</h5>
+                            <p class="card-text">Rapid turnaround to get your site live quickly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose-us" class="section">
+        <div class="container">
+            <h2>Why Choose Us</h2>
+            <div class="row">
+                <div class="col-md-6 why-choose-item mb-3">
+                    <i class="fas fa-dollar-sign fa-2x"></i>
+                    <span>Affordable pricing tailored to your budget.</span>
+                </div>
+                <div class="col-md-6 why-choose-item mb-3">
+                    <i class="fas fa-shipping-fast fa-2x"></i>
+                    <span>Fast delivery to meet tight deadlines.</span>
+                </div>
+                <div class="col-md-6 why-choose-item mb-3">
+                    <i class="fas fa-paint-brush fa-2x"></i>
+                    <span>Clean, modern designs that captivate users.</span>
+                </div>
+                <div class="col-md-6 why-choose-item mb-3">
+                    <i class="fab fa-whatsapp fa-2x"></i>
+                    <span>Instant support via WhatsApp for quick responses.</span>
+                </div>
+                <div class="col-md-6 why-choose-item mb-3">
+                    <i class="fas fa-check-circle fa-2x"></i>
+                    <span>Proven results with a focus on conversions.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section bg-light">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="card testimonial-card mx-auto" style="max-width: 600px;">
+                            <div class="card-body text-center">
+                                <p>"AnthonyWeb Design transformed our online presence with a stunning, user-friendly website. Their attention to detail and quick delivery were outstanding!"</p>
+                                <h5>Sarah Johnson</h5>
+                                <p class="text-muted">Small Business Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card testimonial-card mx-auto" style="max-width: 600px;">
+                            <div class="card-body text-center">
+                                <p>"The contact form integration was seamless, and our leads have increased significantly. Highly recommend their professional services!"</p>
+                                <h5>Michael Chen</h5>
+                                <p class="text-muted">Marketing Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card testimonial-card mx-auto" style="max-width: 600px;">
+                            <div class="card-body text-center">
+                                <p>"Their mobile-optimized design made our site accessible to all our customers. Fast, reliable, and a pleasure to work with!"</p>
+                                <h5>Emily Davis</h5>
+                                <p class="text-muted">E-Commerce Entrepreneur</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2>Our Portfolio</h2>
+            <div class="row">
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643" class="img-fluid rounded" alt="E-Commerce Site">
+                        <div class="overlay">E-Commerce Site</div>
+                        <span>E-Commerce Site</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f" class="img-fluid rounded" alt="Portfolio Website">
+                        <div class="overlay">Portfolio Website</div>
+                        <span>Portfolio Website</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" class="img-fluid rounded" alt="Business Landing Page">
+                        <div class="overlay">Business Landing Page</div>
+                        <span>Business Landing Page</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" class="img-fluid rounded" alt="Blog Platform">
+                        <div class="overlay">Blog Platform</div>
+                        <span>Blog Platform</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1507238691748-d42291d4b7d3" class="img-fluid rounded" alt="Startup Website">
+                        <div class="overlay">Startup Website</div>
+                        <span>Startup Website</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1516321165247-7b38937a34a7" class="img-fluid rounded" alt="Creative Agency">
+                        <div class="overlay">Creative Agency</div>
+                        <span>Creative Agency</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form id="contact-form" action="https://formspree.io/f/mjkrnley" method="POST" class="contact-form mx-auto" style="max-width: 600px;">
+                <div class="mb-4">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                </div>
+                <input type="hidden" name="_subject" value="New Contact Form Submission - AnthonyWeb Design">
+                <input type="hidden" name="_next" value="">
+                <input type="hidden" name="_gotcha" style="display:none !important">
+                <button type="submit" class="btn submit-btn"><span>Send Message</span><span class="spinner"></span></button>
+            </form>
+            <div class="thank-you-message" id="thank-you">Thank you for your message! We'll get back to you soon.</div>
+            <div class="error-message" id="error-message">There was an error submitting the form. Please try again later.</div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/2347049521520" class="whatsapp-btn" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp fa-2x"></i>
+        <span style="display: none;">Chat</span>
+    </a>
+
+    <!-- Bootstrap JS and Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script>
+        // Log WhatsApp Button Presence
+        console.log('WhatsApp button element:', document.querySelector('.whatsapp-btn') ? 'Found' : 'Not found');
+
+        // Log Gallery Items
+        console.log('Gallery items found:', document.querySelectorAll('.gallery-item').length);
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll Animations with IntersectionObserver
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.service-card, .why-choose-item, .testimonial-card, .gallery-item').forEach((el, index) => {
+            el.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(el);
+        });
+
+        // Form Submission
+        const form = document.getElementById('contact-form');
+        const thankYouMessage = document.getElementById('thank-you');
+        const errorMessage = document.getElementById('error-message');
+        const submitBtn = form.querySelector('.submit-btn');
+
+        console.log('Site URL:', window.location.href);
+        console.log('Formspree endpoint:', form.action);
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.classList.add('sending');
+            thankYouMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            const formData = new FormData(form);
+            const dataObject = Object.fromEntries(formData);
+            console.log('Form data:', dataObject);
+
+            if (!dataObject.name || !dataObject.email || !dataObject.message) {
+                errorMessage.textContent = 'Please fill out all required fields.';
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('sending');
+                setTimeout(() => errorMessage.style.display = 'none', 5000);
+                return;
+            }
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json',
+                        'Origin': window.location.origin,
+                        'Referer': window.location.href
+                    }
+                });
+
+                console.log('Response status:', response.status);
+                console.log('Response headers:', [...response.headers.entries()]);
+
+                let result = {};
+                try {
+                    result = await response.json();
+                    console.log('Formspree response:', result);
+                } catch (jsonError) {
+                    console.error('JSON parsing error:', jsonError);
+                    console.log('No valid JSON, checking status for success.');
+                }
+
+                if (response.ok) {
+                    form.reset();
+                    thankYouMessage.style.display = 'block';
+                    setTimeout(() => thankYouMessage.style.display = 'none', 5000);
+                } else {
+                    let errorText = result.error || `Form submission failed with status ${response.status}. Please try again later.`;
+                    if (result.error?.includes('form is not active')) {
+                        errorText = 'Form submission failed: Please activate the form in your Formspree dashboard (https://formspree.io).';
+                    } else if (result.error?.includes('empty form')) {
+                        errorText = 'Form submission failed: Please ensure all fields are filled correctly.';
+                    } else if (result.error?.includes('Invalid form')) {
+                        errorText = 'Form submission failed: Check if the form ID (mjkrnley) is correct in your Formspree dashboard.';
+                    }
+                    errorMessage.textContent = errorText;
+                    errorMessage.style.display = 'block';
+                    setTimeout(() => errorMessage.style.display = 'none', 5000);
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                errorMessage.textContent = 'Network error: Please check your connection or verify the Formspree form ID.';
+                errorMessage.style.display = 'block';
+                setTimeout(() => errorMessage.style.display = 'none', 5000);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('sending');
+            }
+        });
+    </script>
+</body>
+</html>
